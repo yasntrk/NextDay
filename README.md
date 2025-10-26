@@ -1,7 +1,10 @@
-1. Environment Preparation
+# 🧭 Project Setup Guide – NextDate
 
-To ensure consistency and isolated dependencies, use pyenv and pipenv.
+## 1. Environment Preparation
 
+To ensure consistency and isolated dependencies, use **pyenv** and **pipenv**.
+
+```bash
 # Install pyenv (for managing Python versions)
 curl https://pyenv.run | bash
 exec "$SHELL"
@@ -31,7 +34,7 @@ pytest --cov=next_date --cov-report=term-missing
 pytest --cov=next_date --cov-report=html
 
 
-Open the coverage report with:
+To open the coverage report:
 
 xdg-open htmlcov/index.html
 
@@ -39,13 +42,13 @@ Test Coverage Report Summary
 
 (From the official report document)
 
-Report Title: Test Coverage Report – NextDate Class
-Prepared By: Yasin Türk, Toprak Zeybek
-Reviewed By: Tuğkan Tuğlular
-Approved By: IZTECH
-Date: 26.10.2025
-
-Test Techniques Used:
+Field	Details
+Report Title	Test Coverage Report – NextDate Class
+Prepared By	Yasin Türk, Toprak Zeybek
+Reviewed By	Tuğkan Tuğlular
+Approved By	IZTECH
+Date	26.10.2025
+Test Techniques Used
 
 Equivalence Class Testing (ECT)
 
@@ -53,26 +56,26 @@ Decision Table Testing (DTT)
 
 Boundary Value Testing (BVT)
 
-Key Metrics:
-
+Key Metrics
 Area	Coverage
 Functional Testing	94%
 Integration Testing	100%
 System Testing	100%
 Overall	96%
+Findings
 
-Findings:
+The deliberate bug in last_business_day_of_month() was successfully detected by BVT, ECT, and DTT test suites.
 
-The deliberate bug in last_business_day_of_month() was successfully detected by BVT, ECT, and DTT suites.
+Weak oracle tests failed to catch the bug, highlighting the need for stronger assertion logic.
 
-Weak oracle tests failed to catch it, highlighting the need for better assertion logic.
+Overall code coverage reached 96%.
 
-Code coverage reached 96%.
+Next Steps
 
-Next Steps:
+Fix the condition:
 
-Fix while cur.weekday() > 5: → >= 5
+while cur.weekday() > 5:  # → should be >= 5
 
 Re-run tests to confirm 100% coverage.
 
-Add more edge-case validations for years (1812–2012).
+Add more edge-case validations for boundary years (1812–2012).
